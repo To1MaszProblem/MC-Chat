@@ -1,0 +1,8 @@
+name: MC-Chat
+version: '1.0'
+main: pl.to1maszproblem.Main
+api-version: 1.18
+authors: [ To1MaszProblem ]
+commands:
+  chat:
+    aliases: [czat]

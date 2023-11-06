@@ -4,6 +4,7 @@ import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -27,13 +28,18 @@ public class TextUtil {
     }
 
 
-    public static void sendMessage(String chatType, Player player, String message) {
-        switch (chatType) {
-            case "CHAT" -> player.sendMessage(fixColor(message));
-            case "ACTION_BAR" -> player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(fixColor(message)));
-            case "SUBTITLE" -> player.sendTitle("", fixColor(message), 10, 35, 10);
-            case "TITLE" -> player.sendTitle(fixColor(message), "", 10, 35, 10);
-        }
+
+
+    public static void sendMessage(CommandSender player, String message) {
+        player.sendMessage(fixColor(message));
+    }
+
+    public static void sendTitle(Player player, String title, String subtitle) {
+        player.sendTitle(fixColor(title), fixColor(subtitle), 10, 70, 20);
+    }
+
+    public static void sendActionBar(Player player, String message) {
+        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(fixColor(message)));
     }
 
     public static void sendLogger(String text, Plugin plugin) {

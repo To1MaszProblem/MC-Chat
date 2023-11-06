@@ -30,9 +30,9 @@ public class MessageHistoryMenu implements InventoryProvider {
 
 
             user.getMessages().forEach(messages ->
-                    contents.add(ClickableItem.of(new ItemBuilder(Material.BOOK, 1)
-                                    .setName(Main.getInstance().getConfig().getString("chathistory.name").replace("[player]", targetName))
-                                    .addLore(Main.getInstance().getConfig().getStringList("chathistory.lore"))
+                    contents.add(ClickableItem.of(new ItemBuilder(Main.getInstance().getConfiguration().getItemMessageHistoryType(), 1)
+                                    .setName(Main.getInstance().getConfiguration().getHistoryMenuTitle().replace("[player]", targetName))
+                                    .addLore(Main.getInstance().getConfiguration().getMessageHistoryMenuLore())
                                     .addLorePlaceholder("[message]", messages)
                                     .build(),
                             false,
